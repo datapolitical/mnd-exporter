@@ -39,7 +39,7 @@ print (auth)
 
 download = s.get(data_url)
 
-print('===DOWNLOAD==')
+print('===DOWNLOAD===')
 print (download)
 
 with open('NewDiary.xls', 'wb') as file:
