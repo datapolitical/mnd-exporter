@@ -7,6 +7,8 @@ from base64 import b64encode
 
 import yaml
 
+from export import *
+
 import numpy as np
 import pandas as pd
 
@@ -15,32 +17,60 @@ from requests.structures import CaseInsensitiveDict
 from dotenv import load_dotenv
 load_dotenv()
 
-login = os.environ['MY_NET_DIARY_LOGIN']
-password = os.environ['MY_NET_DIARY_PASSWORD']
+def main():
+    #xls = read_diary()
+    xls = export_diary()
+    save_diary(xls)
+    get_favorite_food(xls)
+
+def export_diary():
+
+    login = os.environ['MY_NET_DIARY_LOGIN']
+    password = os.environ['MY_NET_DIARY_PASSWORD']
 
 
-auth_url = 'https://www.mynetdiary.com/muiSignIn.do'
-data_url = 'https://www.mynetdiary.com/exportData.do?year=2021'
+    auth_url = 'https://www.mynetdiary.com/muiSignIn.do'
+    data_url = 'https://www.mynetdiary.com/exportData.do?year=2021'
 
-headers = {
-    'Content-Type': 'application/json',
-}
+    headers = {
+        'Content-Type': 'application/json',
+    }
 
-payload_dict = {"login":login,"password":password,"rememberMe":"true"}
+    payload_dict = {"login":login,"password":password,"rememberMe":"true"}
 
-data = json.dumps(payload_dict)
+    data = json.dumps(payload_dict)
 
 
-s = requests.Session()
-auth = s.post('http://www.mynetdiary.com/muiSignIn.do', headers=headers, data=data, auth=('login', 'password'))
+    s = requests.Session()
+    auth = s.post('http://www.mynetdiary.com/muiSignIn.do', headers=headers, data=data, auth=('login', 'password'))
 
-print('===AUTH===')
-print (auth)
+    print('===AUTH===')
+    print (auth)
 
-download = s.get(data_url)
+    download = s.get(data_url)
 
-print('===DOWNLOAD==')
-print (download)
+    print('===DOWNLOAD==')
+    print (download)
 
-with open('NewDiary.xls', 'wb') as file:
-    file.write(download.content)
+    return download.content
+
+def get_favorite_food(download):
+
+    xls = pd.ExcelFile(download)
+
+    df = pd.read_excel(xls, index_col=None)
+    d = df.to_dict(orient='index')
+
+
+    print(d[len(d)-1]['Amount'],d[len(d)-1]['Name'])
+
+def save_diary(download):
+    with open('NewDiary.xls', 'wb') as file:
+        file.write(download)
+
+def read_diary():
+    with open('NewDiary.xls', 'rb') as file:
+        return file.read()
+
+if __name__ == "__main__":
+    main()
