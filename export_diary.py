@@ -63,7 +63,8 @@ def get_favorite_food(download):
 
     mostrecentfood = d[len(d)-1]['Amount']+' '+d[len(d)-1]['Name']
 
-    with open('recent_food.txt', 'w') as file:
+    with open('recent_food.csv', 'w') as file:
+        file.write("food")
         file.write(mostrecentfood)
 
 def save_diary(download):
