@@ -7,7 +7,7 @@ from base64 import b64encode
 
 import yaml
 
-from export import *
+from export_diary import *
 
 import numpy as np
 import pandas as pd
@@ -61,8 +61,10 @@ def get_favorite_food(download):
     df = pd.read_excel(xls, index_col=None)
     d = df.to_dict(orient='index')
 
+    mostrecentfood = d[len(d)-1]['Amount']+d[len(d)-1]['Name']
 
-    print(d[len(d)-1]['Amount'],d[len(d)-1]['Name'])
+    with open('recent_food.txt', 'w') as file:
+        file.write(mostrecentfood)
 
 def save_diary(download):
     with open('NewDiary.xls', 'wb') as file:
