@@ -34,7 +34,7 @@ jobs:
           git config --local user.name ${{ secrets.USERNAME_GITHUB }}
           git config --local user.email ${{ secrets.EMAIL }}
           git pull --ff-only origin main
-          git add recent_food.txt
+          git add recent_food.yml
           git commit -am "Update last meal" || echo "Nothing to update"
       - name: Push changes
         uses: ad-m/github-push-action@master
