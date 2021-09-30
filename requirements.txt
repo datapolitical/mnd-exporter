@@ -1,4 +1,3 @@
 requests==2.25.0
 python-dotenv==0.15.0
-PyYAML>=5.4
 -e git+https://github.com/datapolitical/mnd-exporter#egg=mnd-exporter
