@@ -61,7 +61,7 @@ def get_favorite_food(download):
     df = pd.read_excel(xls, index_col=None)
     d = df.to_dict(orient='index')
 
-    mostrecentfood ="- food: " + d[len(d)-1]['Amount']+' '+d[len(d)-1]['Name']
+    mostrecentfood ="food: " + d[len(d)-1]['Amount']+' '+d[len(d)-1]['Name']
 
     with open('recent_food.yml', 'w') as file:
         file.write(mostrecentfood)
