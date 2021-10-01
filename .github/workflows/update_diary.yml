@@ -3,6 +3,8 @@ name: Update Diary
 on:
   push:
   workflow_dispatch:
+  schedule:
+    - cron:  '50 * * * *'
 
 jobs:
 
