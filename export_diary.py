@@ -61,6 +61,7 @@ def get_favorite_food(download):
     df = pd.read_excel(xls, index_col=None)
     df['Date & Time'] =pd.to_datetime(df['Date & Time'])
     df = df.sort_values(by=['Date & Time'])
+    df.reset_index(drop=True, inplace=True)
     print(df)
     d = df.to_dict(orient='index')
 
