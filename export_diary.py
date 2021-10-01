@@ -65,8 +65,18 @@ def get_favorite_food(download):
     print(df[['Name', 'Meal', 'Date & Time']])
     d = df.to_dict(orient='index')
 
-
-    mostrecentfood ="food: " + d[len(d)-1]['Name']
+    mostrecentfood ="food: For " + d[len(d)-1]['Meal'] + " I had "
+    snacktime = d[len(d)-1]['Date & Time']
+    meal = d[len(d)-1]['Meal']
+    counter = 1
+    while snacktime == d[len(d)-counter]['Date & Time'] and meal == d[len(d)-counter]['Meal']:
+        mostrecentfood += d[len(d)-counter]['Name']
+        if snacktime == d[len(d)-(counter+1)]['Date & Time']:
+            if snacktime == d[len(d)-(counter+2)]['Date & Time']:
+                mostrecentfood += ", "
+            elif snacktime == d[len(d)-(counter+1)]['Date & Time']:
+                mostrecentfood += " & "
+        counter += 1
     print(mostrecentfood)
     with open('recent_food.yml', 'w') as file:
         file.write(mostrecentfood)
