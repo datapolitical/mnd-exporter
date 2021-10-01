@@ -67,7 +67,7 @@ def get_favorite_food(download):
 
 
     mostrecentfood ="food: " + d[len(d)-1]['Name']
-
+    print(mostrecentfood)
     with open('recent_food.yml', 'w') as file:
         file.write(mostrecentfood)
 
