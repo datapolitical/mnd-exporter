@@ -62,7 +62,7 @@ def get_favorite_food(download):
     df['Date & Time'] =pd.to_datetime(df['Date & Time'])
     df = df.sort_values(by=['Date & Time'])
     df.reset_index(drop=True, inplace=True)
-    print(df)
+    print(df[['Name', 'Meal', 'Date & Time']])
     d = df.to_dict(orient='index')
 
 
