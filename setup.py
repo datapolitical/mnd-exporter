@@ -6,7 +6,7 @@ with open("requirements.txt", "r") as fh:
     requirements = [line.strip() for line in fh]
 
 setuptools.setup(
-    name="mnd-exporter",
+    name="mndexp",
     version="0.1",
     author="Chris Nicholson",
     author_email="datapolitical@gmail.com",
