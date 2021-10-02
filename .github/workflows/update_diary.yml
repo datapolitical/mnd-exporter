@@ -27,7 +27,7 @@ jobs:
 
       - name: Execute Python script
         run: |
-          python3 export_diary.py
+          python3 mndexp
         env:
           MY_NET_DIARY_LOGIN: ${{ secrets.MY_NET_DIARY_LOGIN }}
           MY_NET_DIARY_PASSWORD: ${{ secrets.MY_NET_DIARY_PASSWORD }}
