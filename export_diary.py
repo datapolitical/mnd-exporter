@@ -64,10 +64,17 @@ def get_favorite_food(download):
     df.reset_index(drop=True, inplace=True)
     print(df[['Name', 'Meal', 'Date & Time']])
     d = df.to_dict(orient='index')
-
-    mostrecentfood ="food: For " + d[len(d)-1]['Meal'] + " I had "
-    snacktime = d[len(d)-1]['Date & Time']
     meal = d[len(d)-1]['Meal']
+    if meal == "Breakfast"
+        pretty_meal = "breakfast"
+    elif meal == "Lunch"
+        pretty_meal = "lunch"
+    elif meal == "Dinner"
+        pretty_meal = "dinner"
+    elif meal == "Snack"
+        pretty_meal =a snack"
+    mostrecentfood ="food: For " + pretty_meal + " I had "
+    snacktime = d[len(d)-1]['Date & Time']
     counter = 1
     while snacktime == d[len(d)-counter]['Date & Time'] and meal == d[len(d)-counter]['Meal']:
         mostrecentfood += d[len(d)-counter]['Name']
