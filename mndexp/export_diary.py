@@ -7,8 +7,6 @@ from base64 import b64encode
 
 import yaml
 
-from export_diary import *
-
 import numpy as np
 import pandas as pd
 
@@ -17,7 +15,7 @@ from requests.structures import CaseInsensitiveDict
 from dotenv import load_dotenv
 load_dotenv()
 
-def main():
+def foodexport():
     #xls = read_diary()
     xls = export_diary()
     save_diary(xls)
@@ -97,4 +95,4 @@ def read_diary():
         return file.read()
 
 if __name__ == "__main__":
-    main()
+    foodexport()
