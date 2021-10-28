@@ -45,6 +45,10 @@ def export_diary():
     print('===AUTH===')
     print (auth)
 
+    print('==COOKIES==')
+    for cookie in s.cookies:
+        print (cookie.name, cookie.value)
+
     download = s.get(data_url)
 
     print('===DOWNLOAD==')
