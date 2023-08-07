@@ -109,6 +109,8 @@ def get_favorite_food(download):
                 elif snacktime == d[len(d)-(counter+1)]['Date & Time']:
                     mostrecentfood += " & "
             counter += 1
+    else:
+        mostrecentfood = "not available"
         print(mostrecentfood)
     with open('recent_food.yml', 'w') as file:
         file.write(mostrecentfood)
