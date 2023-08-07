@@ -34,7 +34,7 @@ def export_diary():
     print(year)
 
     auth_url = 'https://www.mynetdiary.com/muiSignIn.do'
-    data_url = 'https://www.mynetdiary.com/exportData.do?year=' + year
+    data_url = 'https://www.mynetdiary.com/exportData.do?year=' + str(year)
     print(data_url) 
 
     headers = {
