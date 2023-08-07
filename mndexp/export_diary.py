@@ -28,12 +28,10 @@ def export_diary():
     login = os.environ['MY_NET_DIARY_LOGIN']
     password = os.environ['MY_NET_DIARY_PASSWORD']
 
-today = datetime.datetime.now()
+    today = datetime.datetime.now()
 
-year = today.year
-print(year)
-
-
+    year = today.year
+    print(year)
 
     auth_url = 'https://www.mynetdiary.com/muiSignIn.do'
     data_url = 'https://www.mynetdiary.com/exportData.do?year=' + year
