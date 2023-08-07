@@ -5,6 +5,8 @@ import os
 import shutil
 from base64 import b64encode
 
+import datetime
+
 import yaml
 
 import numpy as np
@@ -26,9 +28,16 @@ def export_diary():
     login = os.environ['MY_NET_DIARY_LOGIN']
     password = os.environ['MY_NET_DIARY_PASSWORD']
 
+today = datetime.datetime.now()
+
+year = today.year
+print(year)
+
+
 
     auth_url = 'https://www.mynetdiary.com/muiSignIn.do'
-    data_url = 'https://www.mynetdiary.com/exportData.do?year=2021'
+    data_url = 'https://www.mynetdiary.com/exportData.do?year=' + year
+    print(data_url) 
 
     headers = {
         'Content-Type': 'application/json',
