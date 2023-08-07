@@ -99,6 +99,7 @@ def get_favorite_food(download):
     counter = 1
     while snacktime == d[len(d)-counter]['Date & Time'] and meal == d[len(d)-counter]['Meal']:
         mostrecentfood += d[len(d)-counter]['Name']
+        print(len(d))
         if snacktime == d[len(d)-(counter+1)]['Date & Time']:
             if snacktime == d[len(d)-(counter+2)]['Date & Time']:
                 mostrecentfood += ", "
