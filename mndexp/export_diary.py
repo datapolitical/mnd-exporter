@@ -97,16 +97,19 @@ def get_favorite_food(download):
     mostrecentfood ="food: For " + pretty_meal + " I had "
     snacktime = d[len(d)-1]['Date & Time']
     counter = 1
-    while snacktime == d[len(d)-counter]['Date & Time'] and meal == d[len(d)-counter]['Meal']:
-        mostrecentfood += d[len(d)-counter]['Name']
-        print(len(d))
-        if snacktime == d[len(d)-(counter+1)]['Date & Time']:
-            if snacktime == d[len(d)-(counter+2)]['Date & Time']:
-                mostrecentfood += ", "
-            elif snacktime == d[len(d)-(counter+1)]['Date & Time']:
-                mostrecentfood += " & "
-        counter += 1
-    print(mostrecentfood)
+    if len(d) > 0:
+        while snacktime == d[len(d)-counter]['Date & Time'] and meal == d[len(d)-counter]['Meal']:
+            mostrecentfood += d[len(d)-counter]['Name']
+            print(len(d))
+            if len(d) < 3:
+                break
+            if snacktime == d[len(d)-(counter+1)]['Date & Time']:
+                if snacktime == d[len(d)-(counter+2)]['Date & Time']:
+                    mostrecentfood += ", "
+                elif snacktime == d[len(d)-(counter+1)]['Date & Time']:
+                    mostrecentfood += " & "
+            counter += 1
+        print(mostrecentfood)
     with open('recent_food.yml', 'w') as file:
         file.write(mostrecentfood)
 
