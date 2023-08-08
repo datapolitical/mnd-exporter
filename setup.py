@@ -7,7 +7,7 @@ with open("requirements.txt", "r") as fh:
 
 setuptools.setup(
     name="mndexp",
-    version="0.2.3",
+    version="0.2.4",
     author="Chris Nicholson",
     author_email="datapolitical@gmail.com",
     description="A simple exporter for an mnd diary.",

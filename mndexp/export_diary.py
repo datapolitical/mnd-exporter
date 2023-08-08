@@ -47,7 +47,7 @@ def export_diary():
 
 
     s = requests.Session()
-    auth = s.post('http://www.mynetdiary.com/muiSignIn.do', headers=headers, data=data, auth=('login', 'password'))
+    auth = s.post('https://www.mynetdiary.com/muiSignIn.do', headers=headers, data=data, auth=('login', 'password'))
 
     print('===AUTH===')
     print (auth)
